@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FocusSphere</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="logo-box">
+            <img src="logo.png" alt="Logo">
+            <h2>FocusSphere</h2>
+        </div>
+
+        <ul>
+            <li onclick="showPage('dashboardPage')">Dashboard</li>
+            <li onclick="showPage('sessionPage')">Session</li>
+            <li onclick="showPage('statsPage')">Stats</li>
+            <li onclick="showPage('diaryPage')">Session Tasks</li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <p>Discipline Today.<br>Success Tomorrow.</p>
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- DASHBOARD -->
+        <div id="dashboardPage" class="page active">
+
+            <div class="hero">
+    <h1>
+    <span class="welcome-text">Welcome to </span>
+    <span class="brand">FocusSphere</span>
+</h1>
+    <p>Your AI Study Companion ✨</p>
+</div>
+            <div class="dashboard-cards">
+
+    <div class="card">
+        <h3>🤖 AI Focus Detection</h3>
+        <p>Tracks your face and attention in real-time using AI.</p>
+    </div>
+
+    <div class="card">
+        <h3>⏱ Smart Timer</h3>
+        <p>Measure your study sessions and improve productivity.</p>
+    </div>
+
+    <div class="card">
+        <h3>🚨 Distraction Alerts</h3>
+        <p>Get notified instantly when you lose focus.</p>
+    </div>
+
+    <div class="card">
+        <h3>📊 Detailed Reports</h3>
+        <p>Analyze your focus performance and progress over time.</p>
+    </div>
+
+</div>
+
+            <button class="start-btn" onclick="showPage('sessionPage')">
+                Start Study Session →
+            </button>
+
+            <div class="quote-box">
+                "Discipline is choosing between what you want now and what you want most."
+            </div>
+
+        </div>
+
+        <!-- SESSION -->
+        <div id="sessionPage" class="page">
+
+            <h1>Study Session</h1>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Study Timer</h3>
+                    <h2 id="timer">00:00:00</h2>
+                    <button class="start-btn-small" onclick="startTimer()">Start</button>
+                    <button class="stop-btn" onclick="stopTimer()">Stop</button>
+                </div>
+
+                <div class="card">
+                    <h3>Focus Status</h3>
+                    <p id="status">Loading...</p>
+                </div>
+
+                <div class="card">
+                    <h3>AI Detection</h3>
+                    <div class="video-container">
+                        <video id="video" autoplay muted></video>
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="quote-box">
+                "When you feel like quitting, remember why you started."
+            </div>
+
+        </div>
+
+        <!-- STATS -->
+        <div id="statsPage" class="page">
+
+            <div class="stats-wrapper">
+
+                <h1 class="stats-title">Focus Report</h1>
+
+                <div class="card focus-card">
+                    <h3>📊 Focus Score</h3>
+
+                    <div class="progress-container">
+                        <div id="progressBar"></div>
+                    </div>
+
+                    <p id="focusPercent">0%</p>
+                </div>
+
+                <!-- 🔥 FIXED: stats-cards instead of cards -->
+                <div class="stats-cards">
+
+                    <div class="card">
+                        <h3>⏱ Focused Time</h3>
+                        <p id="focusTime">0 sec</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>❌ Unfocused Time</h3>
+                        <p id="unfocusTime">0 sec</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🚨 Distractions</h3>
+                        <p id="distractions">0</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- DIARY PAGE -->
+<div id="diaryPage" class="page">
+
+    <div class="diary-wrapper">
+
+        <h1 class="diary-title">📓 Daily Planner</h1>
+
+        <!-- TARGETS -->
+        <div class="card">
+            <h3>🎯 Today's Targets</h3>
+
+            <ul id="taskList"></ul>
+
+            <div class="task-input">
+                <input type="text" id="taskInput" placeholder="Enter your target...">
+                <button onclick="addTask()">Add</button>
+            </div>
+        </div>
+
+        <!-- JOURNAL -->
+        <div class="card">
+            <h3>📝 Journal</h3>
+            <textarea id="journalText" placeholder="Write your thoughts..."></textarea>
+            <button onclick="saveJournal()">Save</button>
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+<script defer src="https://unpkg.com/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script src="script.js"></script>
+<script defer src="ai.js"></script>
+
+</body>
+</html>
